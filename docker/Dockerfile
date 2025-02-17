@@ -181,8 +181,12 @@ RUN \
   openssl \
   && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /install /usr/local
+RUN mkdir -p /data && chown -R 991:991 /data
 COPY ./data/homeserver.yaml /data/homeserver.yaml
+RUN chown 991:991 /data/homeserver.yaml
+RUN touch /homeserver.log && chown 991:991 /homeserver.log
+
+COPY --from=builder /install /usr/local
 COPY ./docker/start.py /start.py
 COPY ./docker/conf /conf
 
