@@ -182,6 +182,7 @@ RUN \
   && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /install /usr/local
+COPY ./data/homeserver.yaml /data/homeserver.yaml
 COPY ./docker/start.py /start.py
 COPY ./docker/conf /conf
 
