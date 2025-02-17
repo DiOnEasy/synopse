@@ -190,7 +190,7 @@ COPY --from=builder /install /usr/local
 COPY ./docker/start.py /start.py
 COPY ./docker/conf /conf
 
-EXPOSE 8008
+EXPOSE 8008/tcp
 
 ENTRYPOINT ["/start.py"]
 
